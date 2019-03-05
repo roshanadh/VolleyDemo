@@ -53,9 +53,8 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
-                            JSONObject obj = response;
-                            String success = obj.get("success").toString();
-                            String message = obj.get("message").toString();
+                            String success = response.get("success").toString();
+                            String message = response.get("message").toString();
                             addToTV(success, message);
                         }
                         catch (Exception e)
@@ -70,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
                         }
                     });
 
+                //Adding to the request queue actually makes the GET request
                 queue.add(request);
             }
         });
