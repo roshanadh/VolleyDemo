@@ -1,5 +1,5 @@
 # VolleyDemo
-Consume JSON response from a RESTful API call using Volley in Android
+Consumes JSON Object response from a RESTful API call using Volley in Android
 
 ## Usage
 Fetch response for
