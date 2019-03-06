@@ -23,6 +23,8 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.Iterator;
+
 public class MainActivity extends AppCompatActivity {
 
     EditText etUrl;
@@ -53,13 +55,16 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
-                            String success = response.get("success").toString();
-                            String message = response.get("message").toString();
-                            addToTV(success, message);
+                            Iterator<String> iterator = response.keys();
+                            while(iterator.hasNext()) {
+                                String key = iterator.next();
+                                String value = response.get(key).toString();
+                                addToTV(key, value);
+                            }
                         }
                         catch (Exception e)
                         {
-
+                            tvResponse.setText("Exception occurred! " + e.getMessage());
                         }
                     }
                     }, new Response.ErrorListener() {
@@ -74,8 +79,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-    public void addToTV(String success, String message) {
-        tvResponse.setText("success: " + success);
-        tvResponse.setText(tvResponse.getText()+"\n\nmessage: " + message);
+    public void addToTV(String key, String value) {
+        String currentText = tvResponse.getText().toString();
+        tvResponse.setText(currentText + "\n\n" + key +": " + value);
     }
 }
