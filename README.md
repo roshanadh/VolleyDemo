@@ -1,5 +1,6 @@
 # VolleyDemo
-Consumes JSON Object response from a RESTful API call using Volley in Android
+* Consumes JSON Object response from a RESTful API call using Volley in Android
+* Displays the JSON response as key-value pairs in a TextView
 
 ## Usage
 Fetch response for
